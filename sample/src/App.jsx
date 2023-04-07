@@ -1,37 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Test from './components/event'
-import event from './components/event'
+import React, { useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+function TimeDisplay() {
+  const [currentTime, setCurrentTime] = useState('');
+
+  const handleButtonClick = () => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+    setCurrentTime(timeString);
+  };
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={event}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <button
+        onClick={handleButtonClick}
+        style={{
+          backgroundColor: 'lavender',
+          border: 'none',
+          color: 'black',
+          padding: '10px 24px',
+          textAlign: 'center',
+          textDecoration: 'none',
+          display: 'inline-block',
+          fontSize: '16px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+        }}
+      >
+        What's the time now?
+      </button>
+      <p>Time: {currentTime}</p>
     </div>
-  )
+  );
 }
 
-export default App
+export default TimeDisplay;
